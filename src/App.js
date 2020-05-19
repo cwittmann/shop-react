@@ -1,8 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import OrderList from "./Order/OrderList";
-import OrderEdit from "./Order/OrderEdit";
+import OrderList from "./order/OrderList";
+import OrderEdit from "./order/OrderEdit";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 export function App() {

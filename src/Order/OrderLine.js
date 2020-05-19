@@ -18,7 +18,8 @@ export class OrderLine extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.productName} -{this.props.orderLine.amount} item(s){" "}
+        {this.state.productName} - {this.props.orderLine.amount} item
+        {this.props.orderLine.amount > 1 && "s"}
       </React.Fragment>
     );
   }

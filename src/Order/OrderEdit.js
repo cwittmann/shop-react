@@ -9,16 +9,16 @@ export class OrderEdit extends Component {
     order: {},
   };
 
-  componentDidMount() {
+  componentDidMount() {}
+
+  render() {
     let id = this.props.match.params.id;
 
     axios.get("http://localhost:8000/orders/" + id).then((res) => {
       const order = res.data;
       this.setState({ order: order });
     });
-  }
 
-  render() {
     return (
       <div>
         <h1>Edit Order</h1>

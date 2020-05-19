@@ -17,11 +17,9 @@ export class OrderLine extends Component {
 
   render() {
     return (
-      <div>
-        <h3>
-          {this.state.productName} -{this.props.orderLine.amount} item(s){" "}
-        </h3>
-      </div>
+      <React.Fragment>
+        {this.state.productName} -{this.props.orderLine.amount} item(s){" "}
+      </React.Fragment>
     );
   }
 }

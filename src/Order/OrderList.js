@@ -8,10 +8,18 @@ export class OrderList extends Component {
   };
 
   componentDidMount() {
+    this._isMounted = true;
+
     axios.get("http://localhost:8000/orders").then((res) => {
       const orders = res.data;
-      this.setState({ orders: orders });
+      if (this._isMounted) {
+        this.setState({ orders: orders });
+      }
     });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

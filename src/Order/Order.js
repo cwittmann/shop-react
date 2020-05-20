@@ -1,11 +1,32 @@
 import React, { Component } from "react";
 import Moment from "moment";
 import OrderLine from "./OrderLine";
+import axios from "axios";
 import ListGroup from "react-bootstrap/ListGroup";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 
 export class Order extends Component {
+  state = {
+    orderLines: [],
+  };
+
+  componentDidMount() {
+    this._isMounted = true;
+
+    axios
+      .get("http://localhost:8000/orderLinesOfOrder/" + this.props.order.id)
+      .then((res) => {
+        if (this._isMounted) {
+          this.setState({ orderLines: res.data });
+        }
+      });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   render() {
     return (
       <Card>
@@ -16,7 +37,7 @@ export class Order extends Component {
           </Card.Title>
 
           <ListGroup>
-            {this.props.order.orderLines.map((orderLine, i) => {
+            {this.state.orderLines.map((orderLine, i) => {
               return (
                 <ListGroup.Item key={i}>
                   <OrderLine key={i} orderLine={orderLine} />

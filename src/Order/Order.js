@@ -32,7 +32,8 @@ export class Order extends Component {
       <Card>
         <Card.Body>
           <Card.Title>
-            Order from {Moment(this.props.order.date).format("d MMM")} {" - "}
+            Order from {Moment(this.props.order.date).format("d.M.YYYY")}{" "}
+            {" - "}
             {this.props.order.status}
           </Card.Title>
 
